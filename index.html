@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>Gowtham Gandavarapu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#FBFAF8; --card:#FFFFFF; --ink:#16181C; --ink2:#4E545E; --ink3:#868D98;
+  --rule:#E2E0DB; --rule2:#C9C6C0; --accent:#1F4B99; --accent-soft:#E8EEF9;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121317; --card:#191B20; --ink:#EDEEF0; --ink2:#A6ACB6; --ink3:#767D88;
+  --rule:#272A31; --rule2:#3A3E47; --accent:#7BA5E8; --accent-soft:#1A2436;
+}}
+:root[data-theme="dark"]{
+  --bg:#121317; --card:#191B20; --ink:#EDEEF0; --ink2:#A6ACB6; --ink3:#767D88;
+  --rule:#272A31; --rule2:#3A3E47; --accent:#7BA5E8; --accent-soft:#1A2436;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+h1,h2,h3{margin:0;line-height:1.2;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+a{color:var(--accent)}
+.lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink3)}
+
+header{padding:56px 0 28px;border-bottom:1px solid var(--rule)}
+header h1{font-size:34px;font-weight:700}
+header .role{font-size:17px;color:var(--ink2);margin-top:8px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--ink3)}
+header .meta a{text-decoration:none;border-bottom:1px solid var(--rule2)}
+
+.intro{padding:26px 0;border-bottom:1px solid var(--rule);font-size:16.5px;color:var(--ink2);line-height:1.62}
+.intro b{color:var(--ink);font-weight:600}
+
+.sec{padding:34px 0 0}
+.sec > .lbl{display:block;margin-bottom:18px}
+
+.proj{background:var(--card);border:1px solid var(--rule);border-radius:7px;padding:22px 24px;margin-bottom:16px}
+.proj h2{font-size:20px;font-weight:600}
+.proj .tag{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:7px}
+.row{display:grid;grid-template-columns:82px 1fr;gap:6px 16px;margin-top:16px;font-size:15px}
+.row dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);padding-top:4px}
+.row dd{margin:0;color:var(--ink2);line-height:1.58}
+.row dd b{color:var(--ink);font-weight:600}
+.row ul{margin:0;padding-left:17px}
+.row li{margin:3px 0}
+.win{color:var(--ink);font-weight:500}
+
+figure{margin:18px 0 0;background:var(--bg);border:1px solid var(--rule);border-radius:5px;padding:16px 14px;overflow-x:auto}
+figure svg{display:block;max-width:100%;height:auto;color:var(--ink2)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.mini{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:14px 16px}
+.mini .n{font-family:var(--mono);font-size:19px;color:var(--accent);font-weight:500}
+.mini .t{font-size:13.5px;color:var(--ink2);margin-top:3px;line-height:1.45}
+
+.how{display:grid;gap:9px;margin-top:2px}
+.how div{background:var(--card);border-left:2px solid var(--accent);border-radius:0 5px 5px 0;padding:11px 15px;font-size:15px;color:var(--ink2)}
+.how b{color:var(--ink);font-weight:600}
+
+.skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.skills span{font-family:var(--mono);font-size:12px;border:1px solid var(--rule2);border-radius:3px;padding:4px 10px;color:var(--ink2)}
+.skills span.cert{border-color:var(--accent);color:var(--accent)}
+
+.cta{margin-top:34px;background:var(--accent-soft);border:1px solid var(--accent);border-radius:7px;padding:22px 24px}
+.cta h2{font-size:18px;font-weight:600;margin-bottom:8px}
+.cta p{font-size:15px;color:var(--ink2)}
+.cta .list{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.cta .list span{font-size:13.5px;background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:5px 11px;color:var(--ink2)}
+footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink3);line-height:1.6}
+@media (max-width:620px){
+  header{padding-top:38px} header h1{font-size:28px}
+  .row{grid-template-columns:1fr;gap:2px} .row dt{padding-top:10px}
+  .proj{padding:18px 17px}
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <h1>Gowtham Gandavarapu</h1>
+  <p class="role">Cloud &amp; platform engineer — Terraform, GCP, CI/CD automation</p>
+  <div class="meta">
+    <span>11+ years</span>
+    <span>Bengaluru, India</span>
+    <a href="mailto:gowthamgv2510@gmail.com">gowthamgv2510@gmail.com</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</header>
+
+<p class="intro">I build the layer that lets other teams ship safely — infrastructure as code, deployment pipelines, and self-service tools that replace tickets. <b>Four systems below, all running in production.</b> Client and employer names are left out on purpose; the problems, the designs and the mechanisms are mine.</p>
+
+<section class="sec">
+  <span class="lbl">Selected work</span>
+
+  <div class="proj">
+    <p class="tag">Terraform · GitHub Actions · GCP</p>
+    <h2>Infrastructure by pull request</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>Every bucket, dataset or service account needed a platform engineer. Teams waited days. And every change was applied by someone running Terraform on their own laptop — no plan review, no record of who approved what.</dd>
+
+      <dt>Built</dt>
+      <dd>A deployment pipeline where <b>the pull request is the interface.</b> Engineers describe what they want by ticking boxes; the pipeline does the rest.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>A PR template lists environments, modules and the action. The requester ticks what they need.</li>
+        <li>The workflow reads the PR body and turns those ticks into a build matrix.</li>
+        <li>Terraform plans each module and <b>posts the full plan back into the pull request</b>, split across comments so nothing is truncated.</li>
+        <li>The pipeline pauses until a reviewer ticks <b>Approve</b> in the PR, then applies and posts the result — success or failure — back to the same thread.</li>
+        <li>Authentication uses Workload Identity Federation: <b>no service account keys anywhere.</b></li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">Teams request infrastructure themselves. Every change carries a plan, a named approver and an audit trail in one place. No local applies, no long-lived keys.</dd>
+    </dl>
+
+    <figure>
+      <svg viewBox="0 0 700 132" role="img" aria-label="A pull request with ticked checkboxes feeds a workflow, which plans each module, posts the plan into the pull request for approval, then applies and reports back.">
+        <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="4" y="34" width="118" height="44" rx="4"/><rect x="164" y="34" width="118" height="44" rx="4"/>
+          <rect x="324" y="34" width="118" height="44" rx="4"/><rect x="484" y="34" width="118" height="44" rx="4"/>
+        </g>
+        <g font-family="IBM Plex Sans,sans-serif" font-size="11.5" fill="currentColor" text-anchor="middle">
+          <text x="63" y="53">pull request</text><text x="63" y="68" font-size="9.5" opacity=".7">boxes ticked</text>
+          <text x="223" y="53">plan per module</text><text x="223" y="68" font-size="9.5" opacity=".7">matrix, one at a time</text>
+          <text x="383" y="53">plan posted in PR</text><text x="383" y="68" font-size="9.5" opacity=".7">reviewer ticks approve</text>
+          <text x="543" y="53">apply</text><text x="543" y="68" font-size="9.5" opacity=".7">result back in PR</text>
+        </g>
+        <g stroke="currentColor" stroke-width="1.2" marker-end="url(#a)">
+          <line x1="122" y1="56" x2="158" y2="56"/><line x1="282" y1="56" x2="318" y2="56"/><line x1="442" y1="56" x2="478" y2="56"/>
+        </g>
+        <path d="M602 56 h44 v52 H63 v-24" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".6" marker-end="url(#a)"/>
+        <text x="350" y="124" font-family="IBM Plex Mono,monospace" font-size="9.5" fill="currentColor" text-anchor="middle" opacity=".6">one thread holds the request, the plan, the approval and the outcome</text>
+      </svg>
+    </figure>
+  </div>
+
+  <div class="proj">
+    <p class="tag">Terraform · config-driven architecture</p>
+    <h2>Adding infrastructure by adding a file</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>A platform covering 27 kinds of resource across three environments. Every new bucket, dataset or permission meant writing Terraform, reviewing code, and waiting for a platform engineer. And because each environment had its own copy, the same fix had to be made three times — so the environments slowly drifted apart.</dd>
+
+      <dt>Built</dt>
+      <dd>Modules that take their inputs from <b>JSON files instead of hard-coded values</b>. The Terraform describes <em>how</em> a resource is built, once. The files describe <em>what</em> to build.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>Each module reads every config file in its folder at plan time — no list to maintain, no wiring to update.</li>
+        <li>The files are templates. The project and environment are filled in at run time, so <b>one file serves dev, staging and production</b> instead of three copies that drift.</li>
+        <li>Adding a dataset means adding a six-line file. No Terraform is written and no module is touched.</li>
+        <li>Modules live in one repository and configs in another, so a fix to a module reaches every environment at once.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">Adding infrastructure became a data change, not a code change. Someone who has never written Terraform can request a resource correctly, and a reviewer reads six lines of JSON instead of a module diff. This is what makes the self-service pipeline above possible.</dd>
+    </dl>
+  </div>
+
+  <div class="proj">
+    <p class="tag">Python · Streamlit · Cloud Run · BigQuery · Terraform</p>
+    <h2>Letting non-engineers document the data warehouse</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>Thousands of undocumented columns. The analysts knew what the data meant; the engineers had to type it in. Giving analysts write access to production metadata was not acceptable.</dd>
+
+      <dt>Built</dt>
+      <dd>A review tool with one firm rule: <b>the app can never write to the warehouse.</b> It produces a changeset; the existing Terraform pipeline applies it.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>A web app behind an identity proxy — sign-in decides which environments you can even see.</li>
+        <li>Browse datasets, filter to columns that are still undocumented, write descriptions.</li>
+        <li>An optional AI draft writes the first version of each description — see the next project for how that was made safe.</li>
+        <li>Approved changes queue up, export as one spreadsheet, and a workflow diffs it against the previous version, rewrites the Terraform config and commits.</li>
+        <li>Everyone affected gets an email grouped by table, with the changes and the commit reference attached.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">The people who understand the data now document it themselves — and every change still lands through the same reviewed, audited path as any other infrastructure change.</dd>
+    </dl>
+  </div>
+
+  <div class="proj">
+    <p class="tag">Vertex AI · Gemini · Python</p>
+    <h2>An AI assistant that cannot make things up</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>Writing thousands of column descriptions by hand is the job nobody ever gets to. A model could draft them in seconds — but <b>a data catalogue containing invented facts is worse than an empty one</b>, and engineers will not trust a tool they suspect is guessing.</dd>
+
+      <dt>Built</dt>
+      <dd>A suggestion engine where <b>the model writes the sentence and the code supplies the facts.</b> Every suggestion is a draft that a person edits and approves — there is no path that applies one automatically.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li><b>The answer shape is fixed.</b> The model is given one field to fill and nothing else, so it structurally cannot return headings, formatting or fragments of its own instructions. This replaced about 150 lines of text filtering that kept missing new ways of failing.</li>
+        <li><b>Examples are real, and always the same.</b> Sample values come from the column itself — the most frequent ones — so the same column gives the same answer every run. An earlier version sampled at random and produced different examples each time.</li>
+        <li><b>The model never chooses the examples.</b> It sees them only as context and is told not to quote them. Ordinary code picks which to show, by data type — smallest, middle and largest for numbers; earliest, middle and latest for dates. A value that isn't in the column cannot appear in the description.</li>
+        <li><b>Three ways to use it:</b> write a new description, improve the one I just typed, or improve the one already there. Placeholders like <em>n/a</em> and <em>null</em> are treated as empty, so junk is never mistaken for real documentation worth preserving.</li>
+        <li><b>Failure is visible, never filled in.</b> Retries raise the temperature each attempt — at zero a retry simply reproduces the identical failure, which is why some columns used to fail on every single run. After three attempts it reports the failure rather than inventing filler.</li>
+        <li><b>Two deliberate human actions</b> — edit and apply, then add to the queue — before anything can reach the pipeline at all.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">The tedious 80% is drafted in seconds, and the human job becomes reviewing instead of authoring — without the catalogue ever showing a value that does not exist in the data.</dd>
+    </dl>
+  </div>
+
+<footer>
+  Systems described here were built for previous and current employers. Names, code and internal details are deliberately omitted — what is described is the design and the approach, which are my own work.
+</footer>
+
+</div>
+<style>
+@media print{
+  :root{
+    --bg:#FFFFFF!important; --card:#FFFFFF!important; --ink:#16181C!important; --ink2:#3F444C!important;
+    --ink3:#6E747E!important; --rule:#D8D6D1!important; --rule2:#BEBBB5!important;
+    --accent:#1F4B99!important; --accent-soft:#F1F5FC!important;
+  }
+  @page{margin:11mm 11mm}
+  body{background:#fff!important;font-size:9.6pt;line-height:1.44}
+  .wrap{max-width:none;padding:0}
+  header{padding:0 0 12px} header h1{font-size:20pt} header .role{font-size:11pt}
+  .intro{padding:12px 0;font-size:10pt}
+  .sec{padding:17px 0 0} .sec > .lbl{margin-bottom:9px}
+  .proj{padding:14px 16px;margin-bottom:10px} .proj h2{font-size:13.5pt}
+  .row{margin-top:10px;font-size:9.6pt;gap:4px 12px}
+  .row li{margin:2px 0}
+  .proj,.cta,.mini,.how div{break-inside:avoid;page-break-inside:avoid}
+  figure{margin-top:10px;padding:8px}
+  .mini{padding:9px 11px} .mini .n{font-size:15pt}
+  .how div{padding:8px 12px;font-size:9.8pt}
+  .cta{margin-top:18px;padding:14px 16px}
+  a{color:#1F4B99!important}
+  footer{margin-top:18px;padding:12px 0 0}
+}
+</style>
+</body>
+</html>
