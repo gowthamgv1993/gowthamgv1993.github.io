@@ -1,10 +1,7 @@
 <!doctype html>
 <html lang="en">
-<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gowtham Gandavarapu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,7 +95,7 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
   </div>
 </header>
 
-<p class="intro">I build the layer that lets other teams ship safely — infrastructure as code, deployment pipelines, and self-service tools that replace tickets. <b>Four systems below, all running in production.</b> Client and employer names are left out on purpose; the problems, the designs and the mechanisms are mine.</p>
+<p class="intro">I build the layer that lets other teams ship safely — infrastructure as code, deployment pipelines, and self-service tools that replace tickets. <b>Six systems below, all of which ran in production.</b> Client and employer names are left out on purpose; the problems, the designs and the mechanisms are mine.</p>
 
 <section class="sec">
   <span class="lbl">Selected work</span>
@@ -220,35 +217,101 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
     </dl>
   </div>
 
+  <div class="proj">
+    <p class="tag">Jenkins · Groovy · Terraform · AWS</p>
+    <h2>One shared library so every team deployed the same way</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>Dozens of services, each with its own hand-written pipeline. Every team had solved approvals, notifications and deployment order differently — and changing how deployment worked meant editing every pipeline separately.</dd>
+
+      <dt>Built</dt>
+      <dd>A <b>shared pipeline library</b>. A team's pipeline file became a few lines calling a standard shape; everything else lived in one place and was maintained once.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>A small set of pipeline shapes — standard, infrastructure, incremental, downstream — so teams pick one rather than invent one.</li>
+        <li><b>One configuration file declares every component and what it depends on</b>, so deployment order is worked out automatically instead of being remembered by a person.</li>
+        <li>Every infrastructure change runs <b>plan → verify → approval in chat → apply.</b> Nothing reaches an environment unreviewed.</li>
+        <li>Blue/green releases with DNS cut-over, so a bad version is switched away from rather than rolled back under load.</li>
+        <li>Secrets encrypted inside the repository; the branch decides which environment is targeted.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">A new service got a production-grade pipeline in a few lines. Changing how every team deployed meant changing one library, not forty pipelines.</dd>
+    </dl>
+  </div>
+
+  <div class="proj">
+    <p class="tag">Ansible · AWX · Packer · AWS</p>
+    <h2>Configuration management for a mixed Windows and Linux fleet</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>Hundreds of servers across Windows, Debian and RedHat, all needing the same monitoring, security and application software. Installed by hand, so no two machines were quite alike and nobody could say what was actually on any given box.</dd>
+
+      <dt>Built</dt>
+      <dd>Around <b>thirty reusable roles</b> covering the full life of each piece of software, plus a composable deployment system, driven from a web console so people who had never written Ansible could still run it.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>Each role handles <b>install, configure, start, restart and remove</b> — separately for Windows, Debian and RedHat, behind a single entry point.</li>
+        <li>Application deployment split into composable pieces — build, artifact, component, deploy, inventory, secrets — that combine, instead of one enormous playbook.</li>
+        <li>Base machine images built with Packer, so servers start out consistent and configuration only handles what actually varies.</li>
+        <li>A web control plane gave a launch button to people who never touched a playbook — the same self-service idea as the Terraform work above, five years earlier.</li>
+        <li><b>Every role had its own pipeline and tests</b>, so a change to a role was verified before it ever reached a server.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">A rebuilt server came back identical to its siblings. Rolling a new agent across the whole fleet became one run rather than a scheduled evening of manual work.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="lbl">The platform underneath</span>
+  <div class="grid">
+    <div class="mini"><div class="n">27</div><div class="t">Terraform module types — networking, IAM, data warehouse, secrets, monitoring, scheduling</div></div>
+    <div class="mini"><div class="n">800+</div><div class="t">config files driving them, so adding infrastructure means adding a file, not writing code</div></div>
+    <div class="mini"><div class="n">~30</div><div class="t">Ansible roles covering monitoring, security and application software across three operating systems</div></div>
+    <div class="mini"><div class="n">0</div><div class="t">service account keys — every pipeline authenticates without a stored secret</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="lbl">How I work</span>
+  <div class="how">
+    <div><b>Plans get reviewed before they run.</b> If nobody saw what was going to change, it shouldn't change. I have built this gate twice, five years apart, in two different stacks.</div>
+    <div><b>Self-service beats gatekeeping.</b> The goal is that people stop needing me, not that they keep asking me.</div>
+    <div><b>Configuration is data, not code.</b> Adding a thing should mean adding a file — reviewable in six lines, not sixty.</div>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="lbl">Tools</span>
+  <div class="skills">
+    <span class="cert">GCP Professional Cloud Architect</span>
+    <span>Terraform</span><span>GCP</span><span>AWS</span><span>Ansible</span><span>AWX</span><span>Packer</span>
+    <span>GitHub Actions</span><span>Jenkins</span><span>Groovy</span><span>Docker</span><span>Python</span>
+    <span>Vertex AI</span><span>pytest</span><span>tflint</span><span>BigQuery</span><span>Cloud Run</span><span>Linux</span>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Available for short, defined projects</h2>
+  <p>I take on well-scoped pieces of work with a clear finish line — not open-ended retainers. Typical engagements:</p>
+  <div class="list">
+    <span>Terraform foundations for a new GCP or AWS project</span>
+    <span>CI/CD pipeline for infrastructure</span>
+    <span>Moving off service account keys</span>
+    <span>Ansible roles for a mixed Windows/Linux fleet</span>
+    <span>A shared Jenkins pipeline library</span>
+    <span>Reviewing an existing Terraform setup</span>
+    <span>Adding an AI feature with real guardrails</span>
+  </div>
+  <p style="margin-top:14px"><a href="mailto:gowthamgv2510@gmail.com">gowthamgv2510@gmail.com</a></p>
+</div>
+
 <footer>
   Systems described here were built for previous and current employers. Names, code and internal details are deliberately omitted — what is described is the design and the approach, which are my own work.
 </footer>
 
 </div>
-<style>
-@media print{
-  :root{
-    --bg:#FFFFFF!important; --card:#FFFFFF!important; --ink:#16181C!important; --ink2:#3F444C!important;
-    --ink3:#6E747E!important; --rule:#D8D6D1!important; --rule2:#BEBBB5!important;
-    --accent:#1F4B99!important; --accent-soft:#F1F5FC!important;
-  }
-  @page{margin:11mm 11mm}
-  body{background:#fff!important;font-size:9.6pt;line-height:1.44}
-  .wrap{max-width:none;padding:0}
-  header{padding:0 0 12px} header h1{font-size:20pt} header .role{font-size:11pt}
-  .intro{padding:12px 0;font-size:10pt}
-  .sec{padding:17px 0 0} .sec > .lbl{margin-bottom:9px}
-  .proj{padding:14px 16px;margin-bottom:10px} .proj h2{font-size:13.5pt}
-  .row{margin-top:10px;font-size:9.6pt;gap:4px 12px}
-  .row li{margin:2px 0}
-  .proj,.cta,.mini,.how div{break-inside:avoid;page-break-inside:avoid}
-  figure{margin-top:10px;padding:8px}
-  .mini{padding:9px 11px} .mini .n{font-size:15pt}
-  .how div{padding:8px 12px;font-size:9.8pt}
-  .cta{margin-top:18px;padding:14px 16px}
-  a{color:#1F4B99!important}
-  footer{margin-top:18px;padding:12px 0 0}
-}
-</style>
-</body>
-</html>
