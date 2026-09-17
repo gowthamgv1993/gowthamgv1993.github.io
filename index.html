@@ -95,7 +95,7 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
   </div>
 </header>
 
-<p class="intro">I build the layer that lets other teams ship safely — infrastructure as code, deployment pipelines, and self-service tools that replace tickets. <b>Six systems below, all of which ran in production.</b> Client and employer names are left out on purpose; the problems, the designs and the mechanisms are mine.</p>
+<p class="intro">I build the layer that lets other teams ship safely — infrastructure as code, deployment pipelines, and self-service tools that replace tickets. <b>Seven systems below, all of which ran in production.</b> Client and employer names are left out on purpose; the problems, the designs and the mechanisms are mine.</p>
 
 <section class="sec">
   <span class="lbl">Selected work</span>
@@ -218,6 +218,30 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
   </div>
 
   <div class="proj">
+    <p class="tag">Ansible · Jenkins · Jinja2 · AWS · GitLab</p>
+    <h2>Building and bringing up a radio network from one job</h2>
+    <dl class="row">
+      <dt>Problem</dt>
+      <dd>A mobile base station is not one program. It is around fourteen separate codebases — boot firmware, the radio layers, the protocol stack, the management agent — that all have to be built at matching versions and started in the right order across several machines and radio units. Doing it by hand took most of a day, and when a test failed, nobody could say for certain which version of what had been running.</dd>
+
+      <dt>Built</dt>
+      <dd>A path from <b>one triggered job to a running network</b>: matching versions stamped across every repository, each physical lab described as data, and everything a failure investigation needs collected automatically.</dd>
+
+      <dt>How</dt>
+      <dd><ul>
+        <li>One job <b>stamps a coordinated, dated tag across every component repository</b> through the source-control API, so a release is a single name that identifies the exact source of every part.</li>
+        <li>Each physical lab — several of them, with different hardware and layouts — is described as <b>inventory data, not playbooks</b>. Frequencies, transmit power, cell identities and which unit relays to which are values in files.</li>
+        <li>Where units relay wirelessly to each other, the number of hops changes per test — so <b>the playbook is generated from the inventory</b> instead of being written once per layout.</li>
+        <li>The Jenkins jobs are themselves code in a repository, and several jobs <b>share one pipeline definition</b> rather than each carrying a copy. Every merge request is built and deployed before it can merge.</li>
+        <li>After every run, <b>each config file, binary, log and crash dump from every node is archived to S3</b> under a path keyed by job, release tag, timestamp and node — so a failure from two weeks ago can still be opened up.</li>
+      </ul></dd>
+
+      <dt>Result</dt>
+      <dd class="win">A full build and bring-up became a job you trigger rather than a day you spend. When a nightly run failed, the exact versions were already named and the evidence was already collected.</dd>
+    </dl>
+  </div>
+
+  <div class="proj">
     <p class="tag">Jenkins · Groovy · Terraform · AWS</p>
     <h2>One shared library so every team deployed the same way</h2>
     <dl class="row">
@@ -282,6 +306,7 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
     <div><b>Plans get reviewed before they run.</b> If nobody saw what was going to change, it shouldn't change. I have built this gate twice, five years apart, in two different stacks.</div>
     <div><b>Self-service beats gatekeeping.</b> The goal is that people stop needing me, not that they keep asking me.</div>
     <div><b>Configuration is data, not code.</b> Adding a thing should mean adding a file — reviewable in six lines, not sixty.</div>
+    <div><b>When it fails, the evidence should already be there.</b> Collecting logs after someone asks for them is too late. The run should archive what it would need to explain itself.</div>
   </div>
 </section>
 
@@ -290,7 +315,7 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
   <div class="skills">
     <span class="cert">GCP Professional Cloud Architect</span>
     <span>Terraform</span><span>GCP</span><span>AWS</span><span>Ansible</span><span>AWX</span><span>Packer</span>
-    <span>GitHub Actions</span><span>Jenkins</span><span>Groovy</span><span>Docker</span><span>Python</span>
+    <span>GitHub Actions</span><span>Jenkins</span><span>GitLab CI</span><span>Groovy</span><span>Jinja2</span><span>Docker</span><span>Python</span>
     <span>Vertex AI</span><span>pytest</span><span>tflint</span><span>BigQuery</span><span>Cloud Run</span><span>Linux</span>
   </div>
 </section>
@@ -304,6 +329,7 @@ footer{margin-top:40px;padding:20px 0 56px;border-top:1px solid var(--rule);font
     <span>Moving off service account keys</span>
     <span>Ansible roles for a mixed Windows/Linux fleet</span>
     <span>A shared Jenkins pipeline library</span>
+    <span>Build and test automation for hardware labs</span>
     <span>Reviewing an existing Terraform setup</span>
     <span>Adding an AI feature with real guardrails</span>
   </div>
